@@ -1,1 +1,128 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /** Break Points **/
+  --breakpoint-xs: 280px;
+  --breakpoint-sm: 320px;
+  --breakpoint-md: 375px;
+  --breakpoint-lg: 768px;
+  --breakpoint-xl: 1024px;
+  --breakpoint-2xl: 1440px;
+}
+
+:root {
+  /* Primary Colors */
+  --primary-brand: #2563eb;
+  --primary-brand-light: #3b82f6;
+  --primary-brand-dark: #1d4ed8;
+
+  /* Secondary Colors */
+  --secondary-accent: #f59e0b;
+  --secondary-accent-light: #fbbf24;
+  --secondary-accent-dark: #d97706;
+
+  /* Light Theme Colors */
+  --light-background: #ffffff;
+  --light-surface: #f8fafc;
+  --light-surface-secondary: #e2e8f0;
+  --light-text: #1e293b;
+  --light-text-secondary: #64748b;
+  --light-text-muted: #94a3b8;
+  --light-border: #e2e8f0;
+  --light-border-hover: #cbd5e1;
+
+  /* Dark Theme Colors */
+  --dark-background: #0f172a;
+  --dark-surface: #1e293b;
+  --dark-surface-secondary: #334155;
+  --dark-text: #f1f5f9;
+  --dark-text-secondary: #cbd5e1;
+  --dark-text-muted: #94a3b8;
+  --dark-border: #334155;
+  --dark-border-hover: #475569;
+
+  /* Semantic Colors */
+  --success: #10b981;
+  --success-light: #34d399;
+  --warning: #f59e0b;
+  --warning-light: #fbbf24;
+  --error: #ef4444;
+  --error-light: #f87171;
+  --info: #3b82f6;
+  --info-light: #60a5fa;
+
+  /* Book-specific Colors */
+  --book-spine: #8b5cf6;
+  --book-page: #fefce8;
+  --book-text: #365314;
+  --reading-highlight: #fef3c7;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  @apply transition-colors duration-300;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--light-border-hover);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--light-text-muted);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--dark-surface);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--dark-border-hover);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-text-muted);
+}

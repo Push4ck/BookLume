@@ -1,10 +1,28 @@
-import React from "react";
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import BrowseBooksPage from "./pages/BrowseBooksPage";
+import CategoriesPage from "./pages/CategoriesPage";
+import AboutPage from "./pages/AboutPage";
+import MainLayout from "./layout/MainLayout";
 
 const App = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   return (
-    <div className="text-5xl min-h-screen text-center items-center">
-      BookLume
-    </div>
+    <>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/browse-books" element={<BrowseBooksPage />} />
+          <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Route>
+      </Routes>
+    </>
   );
 };
 
